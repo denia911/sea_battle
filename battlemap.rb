@@ -1,22 +1,16 @@
 require_relative 'map'
 # Class for drawing the ships
 class BattleMap
-  def draw_battlemap
-    arr = Map.new.create_map
-    arr = arr.map do |line|
-      line.map do |elem|
-        elem = 0 unless elem != '.'
-        elem
-      end
-    end
-    draw_ship(arr)
-    arr
+  attr_reader :map
+  def initialize
+    @map = (1..10).map { Array.new(10) { |_| 0 } }
+    draw_ship(@map)
   end
 
   private
 
   def draw_ship(arr)
-    vert = 1
+    vert = 0
     4.times { vert = one_deck(vert, arr) }
     3.times { vert = two_deck(vert, arr) }
     2.times { vert = three_deck(vert, arr) }
@@ -24,7 +18,7 @@ class BattleMap
   end
 
   def four_deck(vert, arr)
-    gorizont = rand(1..7)
+    gorizont = rand(0..6)
     deck = gorizont + 4
     until deck == gorizont
       arr[vert][gorizont] = 'x'
@@ -33,7 +27,7 @@ class BattleMap
   end
 
   def three_deck(vert, arr)
-    gorizont = rand(1..8)
+    gorizont = rand(0..7)
     deck = gorizont + 3
     until deck == gorizont
       arr[vert][gorizont] = 'x'
@@ -44,7 +38,7 @@ class BattleMap
   end
 
   def two_deck(vert, arr)
-    gorizont = rand(1..9)
+    gorizont = rand(0..8)
     deck = gorizont + 2
     until deck == gorizont
       arr[vert][gorizont] = 'x'
@@ -55,7 +49,7 @@ class BattleMap
   end
 
   def one_deck(vert, arr)
-    gorizont = rand(1..10)
+    gorizont = rand(0..9)
     arr[vert][gorizont] = 'x'
     vert += 1
     vert

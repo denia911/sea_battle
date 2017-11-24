@@ -5,6 +5,9 @@ class DrawMap
   end
 
   def draw_map
-    @arr.map { |elem| print "#{elem.join(' ')}\n" }
+    print "#{(0..10).to_a.join(' ')}\n"
+    s_arr = ('A'..'J').to_a
+    count = -1
+    @arr.map { |elem| print "#{s_arr[count += 1]} #{elem.join(' ')}\n" }
   end
 end

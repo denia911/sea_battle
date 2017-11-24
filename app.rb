@@ -2,40 +2,19 @@ require_relative 'map'
 require_relative 'battlemap'
 require_relative 'draw_map'
 
-arr = Map.new.create_map
-drawmap = DrawMap.new(arr)
+arr = Map.new
+drawmap = DrawMap.new(arr.map)
 drawmap.draw_map
 
-battle_map = BattleMap.new.draw_battlemap
+battle_map = BattleMap.new
 
 put = nil
 until put == 'end'
   puts 'Put the coordinates in the form like  A.1'
   put = gets.chomp
   put_arr = put.split('.')
-  case put_arr[0].to_s.upcase
-  when 'A'
-    f_el = 1
-  when 'B'
-    f_el = 2
-  when 'C'
-    f_el = 3
-  when 'D'
-    f_el = 4
-  when 'E'
-    f_el = 5
-  when 'F'
-    f_el = 6
-  when 'G'
-    f_el = 7
-  when 'H'
-    f_el = 8
-  when 'I'
-    f_el = 9
-  when 'J'
-    f_el = 10
-  end
-  s_el = put_arr[1].to_i
-  arr[f_el][s_el] = battle_map[f_el][s_el]
+  f_el = Map.new.letter_index(put_arr[0].to_s.upcase)
+  s_el = put_arr[1].to_i - 1
+  arr.map[f_el][s_el] = battle_map.map[f_el][s_el]
   drawmap.draw_map
 end
