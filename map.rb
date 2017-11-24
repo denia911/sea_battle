@@ -12,10 +12,6 @@ class Map
     arr
   end
 
-  def draw_map(arr)
-    arr.map { |elem| print "#{elem.join(' ')}\n" }
-  end
-
   private
 
   def create_first_map

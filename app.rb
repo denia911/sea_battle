@@ -1,10 +1,10 @@
 require_relative 'map'
 require_relative 'battlemap'
+require_relative 'draw_map'
 
-first_map = Map.new
-
-arr = first_map.create_map
-first_map.draw_map(arr)
+arr = Map.new.create_map
+drawmap = DrawMap.new(arr)
+drawmap.draw_map
 
 battle_map = BattleMap.new.draw_battlemap
 
@@ -37,5 +37,5 @@ until put == 'end'
   end
   s_el = put_arr[1].to_i
   arr[f_el][s_el] = battle_map[f_el][s_el]
-  first_map.draw_map(arr)
+  drawmap.draw_map
 end
