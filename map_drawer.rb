@@ -9,7 +9,7 @@ class MapDrawer
     map_header = ('A'..'J').to_a
     count = -1
     map_out = no_shot(@map)
-    map_out.map { |elem| print "#{map_header[count += 1]} #{elem.join(' ')}\n" }
+    map_out.map { |elem| puts "#{map_header[count += 1]} #{elem.join(' ')}\n" }
   end
 
   private
