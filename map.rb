@@ -28,11 +28,7 @@ class Map
   end
 
   def hit(latitude, longitude)
-    a = @map[latitude][longitude]
-    if a == 's'
-      a = 'x'
-    else a = '0'
-    end
+    a = @map[latitude][longitude] == 's' ? 'x' : '0'
     @map[latitude][longitude] = a
   end
 end
