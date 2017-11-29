@@ -6,13 +6,13 @@ class Map
   end
 
   def bang!(put)
-    f_el = letter_index(put.slice!(0))
-    s_el = put.to_i - 1
-    unless (0..10).to_a.include?(f_el && s_el)
+    first_elem = letter_index(put.slice!(0))
+    second_elem = put.to_i - 1
+    unless first_elem < 10 && second_elem < 10
       print "You entered incorrect coordinates\n"
       return
     end
-    hitting(f_el, s_el)
+    hit(first_elem, second_elem)
   end
 
   private
@@ -27,11 +27,11 @@ class Map
     arr.map { |e| e.split('') }
   end
 
-  def hitting(f_el, s_el)
-    unless @map[f_el][s_el] == 's'
-      @map[f_el][s_el] = '0'
+  def hit(first_elem, second_elem)
+    unless @map[first_elem][second_elem] == 's'
+      @map[first_elem][second_elem] = '0'
       return
     end
-    @map[f_el][s_el] = 'x'
+    @map[first_elem][second_elem] = 'x'
   end
 end
