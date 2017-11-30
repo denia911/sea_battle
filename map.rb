@@ -24,11 +24,11 @@ class Map
 
   def read_battlemap
     map = IO.read('battlemap.txt').split("\n")
-    map.map { |e| e.split('') }
+    map.map { |line| line.split('') }
   end
 
   def hit(latitude, longitude)
-    a = @map[latitude][longitude] == 's' ? 'x' : '0'
-    @map[latitude][longitude] = a
+    result = @map[latitude][longitude] == 's' ? 'x' : '0'
+    @map[latitude][longitude] = result
   end
 end
